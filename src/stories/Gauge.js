@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { storiesOf } from '@storybook/react'
+import { withScreenshot } from 'storybook-chrome-screenshot'
 import withReadme from 'storybook-readme/with-readme'
 import { Gauge, Provider } from '../'
 import * as Readme from './README/Gauge.md'
@@ -56,6 +57,7 @@ const zeroCount = [
 
 storiesOf('Core/Gauge', module)
   .addDecorator(withReadme(Readme))
+  .addDecorator(withScreenshot())
   .add('Standard', () => {
     return (
       <Provider>

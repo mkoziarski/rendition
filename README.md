@@ -168,6 +168,21 @@ npm run publish-storybook
 npm test
 ```
 
+### Visual testing
+
+Visual testing relies on a consistent execution environment, ensuring that
+control inputs and fonts are always rendered the same way. To ensure this
+happens both screenshot generation and testing steps are run inside a docker
+container. If you have made changes to a component that will affect the way it
+looks in a story, screenshots should be recreated using `npm run
+generate-screenshots` which will spawn a docker container, generate screenshots
+and copy them back toy your local file system.
+Screenshots of each story are stored in the `__screenshots__` directory. When
+the test suite runs, new screenshots are created and compared against the
+existing ones in the `__screenshots__` directory. Any differences will cause the
+tests to fail, as it indicates an unexpected visual change to a component.
+A full report of the visual test can be found at `.reg/report.html`.
+
 ## Upgrading
 
 [Upgrading from 3.x to 4.x](docs/migrating_3x-4x.md)
